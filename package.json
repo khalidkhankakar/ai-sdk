@@ -1,0 +1,54 @@
+{
+  "name": "ai-sdk-v5-practice",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "node src/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0",
+  "devDependencies": {
+    "@types/node": "latest",
+    "prettier": "^3.8.0",
+    "typescript": "^5.9.3"
+  },
+  "imports": {
+    "#src/*": "./src/*",
+    "#shared/*": "./shared/*"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.10",
+    "@ai-sdk/groq": "^3.0.10",
+    "@ai-sdk/react": "^3.0.41",
+    "@hono/node-server": "^1.19.9",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-query": "^5.90.18",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "ai": "6.0.39",
+    "dotenv": "^17.2.3",
+    "hono": "^4.11.4",
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-markdown": "^10.1.0",
+    "react-router": "^7.12.0",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.17",
+    "zod": "^4.3.5"
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "printWidth": 65,
+    "tabWidth": 2
+  }
+}
