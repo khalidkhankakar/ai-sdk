@@ -7,4 +7,4 @@ config();
 
 export const groqModel = groq('openai/gpt-oss-20b')
 
-export const googleModel = google('gemma-3-12b-it')
+export const googleModel = google('gemini-2.5-flash')
