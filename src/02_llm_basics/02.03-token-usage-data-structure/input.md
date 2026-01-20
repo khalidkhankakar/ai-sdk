@@ -1,0 +1,17 @@
+# Project Information
+
+## Project Name
+Pulse AI
+
+## Description
+Machine Learning Healthcare Platform
+
+## Diseases
+- Diabetes
+- Heart Disease
+- Brain Tumor
+
+## Tech Stack
+- Frontend: Next.js
+- Backend: Flask
+- Machine Learning: Python, Scikit-learn

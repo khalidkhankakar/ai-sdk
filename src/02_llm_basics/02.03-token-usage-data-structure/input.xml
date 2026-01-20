@@ -1,0 +1,19 @@
+<Project>
+  <Name>Pulse AI</Name>
+  <Description>Machine Learning Healthcare Platform</Description>
+
+  <Diseases>
+    <Disease>Diabetes</Disease>
+    <Disease>Heart Disease</Disease>
+    <Disease>Brain Tumor</Disease>
+  </Diseases>
+
+  <TechStack>
+    <Frontend>Next.js</Frontend>
+    <Backend>Flask</Backend>
+    <MachineLearning>
+      <Tool>Python</Tool>
+      <Tool>Scikit-learn</Tool>
+    </MachineLearning>
+  </TechStack>
+</Project>

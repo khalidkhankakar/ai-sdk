@@ -1,0 +1,19 @@
+{
+  "project": {
+    "name": "Pulse AI",
+    "description": "Machine Learning Healthcare Platform",
+    "diseases": [
+      "Diabetes",
+      "Heart Disease",
+      "Brain Tumor"
+    ],
+    "techStack": {
+      "frontend": "Next.js",
+      "backend": "Flask",
+      "machineLearning": [
+        "Python",
+        "Scikit-learn"
+      ]
+    }
+  }
+}
