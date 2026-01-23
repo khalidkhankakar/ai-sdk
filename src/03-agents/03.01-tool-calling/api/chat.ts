@@ -126,6 +126,7 @@ export const POST = async (req: Request): Promise<Response> => {
       weather: tool({
         description: 'Get the weather summary of a place or a location',
         inputSchema: z.object({ location: z.string().describe('The location to get the weather for') }),
+        needsApproval:true,
         execute: async ({ location }, { abortSignal }) => {
           const url = `https://weather-api167.p.rapidapi.com/api/weather/forecast?place=${location}`;
           const options = {

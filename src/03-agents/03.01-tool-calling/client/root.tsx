@@ -5,7 +5,7 @@ import { ChatInput, Message, Wrapper } from './components.tsx';
 import './tailwind.css';
 
 const App = () => {
-  const { messages, sendMessage } = useChat({});
+  const { messages, sendMessage, addToolApprovalResponse } = useChat({});
 
   const [input, setInput] = useState(
     'Tell me what todo items I have today.',
@@ -18,6 +18,7 @@ const App = () => {
           key={message.id}
           role={message.role}
           parts={message.parts}
+          addToolApprovalResponse={addToolApprovalResponse}
         />
       ))}
       <ChatInput

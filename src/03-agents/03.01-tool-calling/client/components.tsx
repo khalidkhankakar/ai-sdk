@@ -15,23 +15,86 @@ export const Wrapper = (props: {
 export const Message = ({
   role,
   parts,
+  addToolApprovalResponse,
 }: {
   role: string;
   parts: UIMessagePart<UIDataTypes, UITools>[];
+  addToolApprovalResponse: (response: { id: string; approved: boolean }) => void;
 }) => {
   const prefix = role === 'user' ? 'User: ' : 'AI: ';
 
-  const text = parts
-    .map((part) => {
-      if (part.type === 'text') {
-        return part.text;
+  const elements: (string | React.ReactNode)[] = [];
+  let textBuffer = prefix;
+
+  parts.forEach((part) => {
+    if (part.type === 'tool-weather') {
+      // Flush text buffer if it has content
+      if (textBuffer.length > prefix.length) {
+        elements.push(
+          <ReactMarkdown key={`text-${elements.length}`}>
+            {textBuffer}
+          </ReactMarkdown>
+        );
+        textBuffer = '';
       }
-      return '';
-    })
-    .join('');
+
+      switch (part.state) {
+        case 'approval-requested':
+          elements.push(
+            <div key={part.toolCallId}>
+              <p>Get weather for {part?.input?.location}?</p>
+              <div className="flex gap-2">
+                <button
+                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded"
+                  onClick={() =>
+                    addToolApprovalResponse({
+                      id: part.approval.id,
+                      approved: true,
+                    })
+                  }
+                >
+                  Approve
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded"
+                  onClick={() =>
+                    addToolApprovalResponse({
+                      id: part.approval.id,
+                      approved: false,
+                    })
+                  }
+                >
+                  Deny
+                </button>
+              </div>
+            </div>
+          );
+          break;
+        case 'approval-responded':
+          elements.push(
+            <div key={part.toolCallId}>
+              Weather in {part?.input?.location}: {part.output}
+            </div>
+          );
+          break;
+      }
+    } else if (part.type === 'text') {
+      textBuffer += part.text;
+    }
+  });
+
+  // Flush remaining text
+  if (textBuffer.length > prefix.length) {
+    elements.push(
+      <ReactMarkdown key={`text-${elements.length}`}>
+        {textBuffer}
+      </ReactMarkdown>
+    );
+  }
+
   return (
     <div className="prose prose-invert my-6">
-      <ReactMarkdown>{prefix + text}</ReactMarkdown>
+      {elements}
     </div>
   );
 };
