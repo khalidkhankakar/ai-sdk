@@ -1,4 +1,4 @@
-import { groqModel } from '#src/model.ts';
+import { googleModel, groqModel } from '#src/model.ts';
 import {
   convertToModelMessages,
   stepCountIs,
@@ -42,7 +42,7 @@ export const POST = async (req: Request): Promise<Response> => {
   const tools = await mcpClient.tools();
 
   const result = streamText({
-    model: groqModel,
+    model: googleModel,
     messages: await convertToModelMessages(messages),
     system: `
       You are a helpful assistant that can use the GitHub API to interact with the user's GitHub account.
