@@ -1,3 +1,5 @@
 node_modules
 dist
 .env
+gcp-oauth.keys.json
+/google-calender-mcp/gcp-oauth.keys.json
